@@ -13,6 +13,10 @@
 #include "RF24Mesh.h"
 #include <SPI.h>
 #include <EEPROM.h>
+
+#include <avr/sleep.h>
+#include <avr/wdt.h>
+#include <avr/power.h>
 //#include <printf.h>
 
 //sesnor stuff
@@ -24,8 +28,9 @@ RF24 radio(7, 8);
 RF24Network network(radio);
 RF24Mesh mesh(radio, network);
 
-//Configure tig adn echo pins
+//Configure tig adn echo and power pins
 
+int PowerPin = 3;
 #define TRIGGER_PIN  4
 #define ECHO_PIN     5
 #define MAX_DISTANCE 250
@@ -72,10 +77,13 @@ void setup() {
   // Set the nodeID manually
   mesh.setNodeID(nodeID);
   //setup watchdog timer
-  setup_watchdog(wdt_2s); //2s delay x 4: or see https://tmrh20.github.io/RF24Network/classRF24Network.html#acb09129760ac9b171833af3055b2b6f5 for alternative
+  setup_watchdog(wdt_8s); //2s delay x 4: or see https://tmrh20.github.io/RF24Network/classRF24Network.html#acb09129760ac9b171833af3055b2b6f5 for alternative
   // Connect to the mesh
   Serial.println(F("Connecting to the mesh..."));
   mesh.begin();
+  //set power pin to US measure-er
+  pinMode(PowerPin, OUTPUT);
+  digitalWrite(PowerPin, LOW);
 }
 
 
@@ -83,7 +91,7 @@ void setup() {
 void loop() {
 
   mesh.update();
-  dist = sonar.ping_cm();
+  measure();
   if (!mesh.write(&dist, 'M', sizeof(dist))) {
 
     // If a write fails, check connectivity to the mesh network
@@ -124,6 +132,8 @@ void loop() {
   while( sleep_cycles_remaining )
     do_sleep();  
   sleep_cycles_remaining = sleep_cycles_per_transmission;
+  //clear dist variable for detecting shit measurments
+  dist = 0;
 }
 
 ISR(WDT_vect)
@@ -141,5 +151,11 @@ void do_sleep(void)
   sleep_disable();                     // System continues execution here when watchdog timed out
 }
 
-
+void measure()
+{
+  digitalWrite(PowerPin, HIGH);
+  delay(10);
+  dist = sonar.ping_cm();  
+  digitalWrite(PowerPin, HIGH);
+}
 
