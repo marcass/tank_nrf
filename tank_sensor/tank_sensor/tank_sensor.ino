@@ -48,12 +48,13 @@ NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
 
 //
-// Sleep declarations
+// old Sleep declarations
 //
 
 typedef enum { wdt_16ms = 0, wdt_32ms, wdt_64ms, wdt_128ms, wdt_250ms, wdt_500ms, wdt_1s, wdt_2s, wdt_4s, wdt_8s } wdt_prescalar_e;
 
-void setup_watchdog(uint8_t prescalar);
+//void setup_watchdog(uint8_t prescalar);
+void setup_watchdog(10);
 void do_sleep(void);
 
 const short sleep_cycles_per_transmission = 4;
@@ -86,7 +87,9 @@ void setup() {
   digitalWrite(PowerPin, LOW);
 }
 
-
+/******************************** This is the configuration for sleep mode ***********************/
+  network.setup_watchdog(wdt_8s);                       //The watchdog timer will wake the MCU and radio every 8s to send a payload, then go back to sleep
+}
 
 void loop() {
 
