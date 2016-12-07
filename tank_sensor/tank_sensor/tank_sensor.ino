@@ -51,14 +51,21 @@ NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 // old Sleep declarations
 //
 
-typedef enum { wdt_16ms = 0, wdt_32ms, wdt_64ms, wdt_128ms, wdt_250ms, wdt_500ms, wdt_1s, wdt_2s, wdt_4s, wdt_8s } wdt_prescalar_e;
+//typedef enum { wdt_16ms = 0, wdt_32ms, wdt_64ms, wdt_128ms, wdt_250ms, wdt_500ms, wdt_1s, wdt_2s, wdt_4s, wdt_8s } wdt_prescalar_e;
 
 //void setup_watchdog(uint8_t prescalar);
-void setup_watchdog(10);
-void do_sleep(void);
+//void setup_watchdog(10);
+//void do_sleep(void);
 
-const short sleep_cycles_per_transmission = 4;
-volatile short sleep_cycles_remaining = sleep_cycles_per_transmission;
+//const short sleep_cycles_per_transmission = 4;
+//volatile short sleep_cycles_remaining = sleep_cycles_per_transmission;
+
+//New sleep declarations
+//This is for sleep mode. It is not really required, as users could just use the number 0 through 10
+typedef enum { wdt_16ms = 0, wdt_32ms, wdt_64ms, wdt_128ms, wdt_250ms, wdt_500ms, wdt_1s, wdt_2s, wdt_4s, wdt_8s } wdt_prescalar_e;
+
+unsigned long awakeTime = 500;                          // How long in ms the radio will stay awake after leaving sleep mode
+unsigned long sleepTimer = 0;                           // Used to keep track of how long the system has been awake
 
 
 
@@ -71,6 +78,15 @@ struct payload_t {
   unsigned long dist;
 };
 
+
+void measure()
+{
+  digitalWrite(PowerPin, HIGH);
+  delay(10);
+  dist = sonar.ping_cm();  
+  digitalWrite(PowerPin, HIGH);
+}
+
 void setup() {
 
   Serial.begin(115200);
@@ -78,15 +94,14 @@ void setup() {
   // Set the nodeID manually
   mesh.setNodeID(nodeID);
   //setup watchdog timer
-  setup_watchdog(wdt_8s); //2s delay x 4: or see https://tmrh20.github.io/RF24Network/classRF24Network.html#acb09129760ac9b171833af3055b2b6f5 for alternative
+  //deprecated
+  //setup_watchdog(wdt_8s); //2s delay x 4: or see https://tmrh20.github.io/RF24Network/classRF24Network.html#acb09129760ac9b171833af3055b2b6f5 for alternative
   // Connect to the mesh
   Serial.println(F("Connecting to the mesh..."));
   mesh.begin();
   //set power pin to US measure-er
   pinMode(PowerPin, OUTPUT);
   digitalWrite(PowerPin, LOW);
-}
-
 /******************************** This is the configuration for sleep mode ***********************/
   network.setup_watchdog(wdt_8s);                       //The watchdog timer will wake the MCU and radio every 8s to send a payload, then go back to sleep
 }
@@ -126,23 +141,43 @@ void loop() {
     Serial.print(" Distance to water ");
     Serial.println(payload.dist);
   }
+
+  /***************************** CALLING THE NEW SLEEP FUNCTION ************************/    
+
+  if(millis() - sleepTimer > awakeTime) {//&& NODE_ADDRESS){  // Want to make sure the Arduino stays awake for a little while when data comes in. Do NOT sleep if master node.
+     Serial.println("Sleep");
+     sleepTimer = millis();                           // Reset the timer value
+     delay(100);                                      // Give the Serial print some time to finish up
+     radio.stopListening();                           // Switch to PTX mode. Payloads will be seen as ACK payloads, and the radio will wake up
+     network.sleepNode(8,255);                          // Sleep the node for 8 cycles of 8second intervals, don't interrupt if payload received CHANGE FOR FORWARDER NODES
+     Serial.println("Awake"); 
+  }
   
-  // Power down the radio.  Note that the radio will get powered back up
-  // on the next write() call.
-  radio.powerDown();  
-  // Sleep the MCU.  The watchdog timer will awaken in a short while, and
-  // continue execution here.
-  while( sleep_cycles_remaining )
-    do_sleep();  
-  sleep_cycles_remaining = sleep_cycles_per_transmission;
+   //Examples:
+   // network.sleepNode( cycles, interrupt-pin );
+   // network.sleepNode(0,0);         // The WDT is configured in this example to sleep in cycles of 1 second. This will sleep 1 second, or until a payload is received 
+   // network.sleepNode(1,255);       // Sleep this node for 1 second. Do not wake up until then, even if a payload is received ( no interrupt ) Payloads will be lost.
+    
+                                /****  end sleep section ***/   
+  
+//  // Power down the radio.  Note that the radio will get powered back up
+//  // on the next write() call.
+//  radio.powerDown();  
+//  // Sleep the MCU.  The watchdog timer will awaken in a short while, and
+//  // continue execution here.
+//  while( sleep_cycles_remaining )
+//    do_sleep();  
+//  sleep_cycles_remaining = sleep_cycles_per_transmission;
+
+
   //clear dist variable for detecting shit measurments
   dist = 0;
 }
 
-ISR(WDT_vect)
-{
-  --sleep_cycles_remaining;
-}
+//ISR(WDT_vect)
+//{
+//  --sleep_cycles_remaining;
+//}
 
 void do_sleep(void)
 {
@@ -154,11 +189,5 @@ void do_sleep(void)
   sleep_disable();                     // System continues execution here when watchdog timed out
 }
 
-void measure()
-{
-  digitalWrite(PowerPin, HIGH);
-  delay(10);
-  dist = sonar.ping_cm();  
-  digitalWrite(PowerPin, HIGH);
-}
+
 
