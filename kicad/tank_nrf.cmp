@@ -1,0 +1,211 @@
+Cmp-Mod V01 Created by PcbNew   date = Fri 28 Oct 2016 13:30:49 NZDT
+
+BeginCmp
+TimeStamp = 580F006D
+Path = /5808A3F6
+Reference = U4;
+ValeurCmp = MT3608b;
+IdModule  = MT3608:MT3608;
+EndCmp
+
+BeginCmp
+TimeStamp = 580F005C
+Path = /580738E6
+Reference = U3;
+ValeurCmp = nRF24L01+;
+IdModule  = nrf:nrf;
+EndCmp
+
+BeginCmp
+TimeStamp = 580F007B
+Path = /5808A49B
+Reference = U5;
+ValeurCmp = LM2596b;
+IdModule  = LM2596:LM2596;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFE5A
+Path = /58072D95
+Reference = C1;
+ValeurCmp = 4F;
+IdModule  = 4FCap:4FCap;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFE81
+Path = /58072F63
+Reference = C2;
+ValeurCmp = 1muF;
+IdModule  = Capacitors_ThroughHole:C_Radial_D5_L11_P2;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFEA8
+Path = /580730B1
+Reference = C3;
+ValeurCmp = 1muF;
+IdModule  = Capacitors_ThroughHole:C_Radial_D5_L11_P2;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFEDD
+Path = /580804F8
+Reference = C4;
+ValeurCmp = 440muF;
+IdModule  = Capacitors_ThroughHole:C_Radial_D8_L21_P3.8;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFF22
+Path = /5808138D
+Reference = C6;
+ValeurCmp = 2F;
+IdModule  = Capacitors_ThroughHole:C_Radial_D13_L21_P5;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFF31
+Path = /5807FD29
+Reference = D1;
+ValeurCmp = 1N5817 (prev IN752);
+IdModule  = Diodes_ThroughHole:Diode_DO-201AD_Horizontal_RM15;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFF40
+Path = /5807FDC4
+Reference = D2;
+ValeurCmp = IN4148;
+IdModule  = Diodes_ThroughHole:Diode_DO-35_SOD27_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFF4F
+Path = /58080422
+Reference = D3;
+ValeurCmp = IN4148;
+IdModule  = Diodes_ThroughHole:Diode_DO-35_SOD27_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFF5F
+Path = /580B2EFC
+Reference = IC1;
+ValeurCmp = ATTINY25-SS;
+IdModule  = ATTiny:ATTiny85;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFFBB
+Path = /580B37E2
+Reference = P1;
+ValeurCmp = CONN_01X02;
+IdModule  = Wire_Connections_Bridges:WireConnection_2.00mmDrill;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFFD6
+Path = /5807FCB2
+Reference = R1;
+ValeurCmp = 220;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFFE6
+Path = /58080B65
+Reference = R2;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFFF6
+Path = /580816BC
+Reference = R3;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 580F0006
+Path = /5808161B
+Reference = R4;
+ValeurCmp = 150;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 580F0012
+Path = /580734B0
+Reference = S1;
+ValeurCmp = JSN-SR40T;
+IdModule  = jsn--sr04t:JSN-SR04T;
+EndCmp
+
+BeginCmp
+TimeStamp = 580F003D
+Path = /58072C84
+Reference = U1;
+ValeurCmp = arduino_nano (mini?);
+IdModule  = arduino_nano:ArduinoNano;
+EndCmp
+
+BeginCmp
+TimeStamp = 580F0E91
+Path = /58080AA5
+Reference = C5;
+ValeurCmp = 440uF;
+IdModule  = Capacitors_ThroughHole:C_Radial_D8_L13_P3.8;
+EndCmp
+
+BeginCmp
+TimeStamp = 580E00EB
+Path = /580D87C0
+Reference = P2;
+ValeurCmp = Jumper1;
+IdModule  = Connect:Wafer_Vertical10x5.8x7RM2.5-3;
+EndCmp
+
+BeginCmp
+TimeStamp = 581125D9
+Path = /581125E7
+Reference = P3;
+ValeurCmp = Jumper2;
+IdModule  = Connect:Wafer_Vertical10x5.8x7RM2.5-3;
+EndCmp
+
+BeginCmp
+TimeStamp = 581133B9
+Path = /581132EB
+Reference = MH1;
+ValeurCmp = CONN_01X01;
+IdModule  = Mounting_hole:MH3.2;
+EndCmp
+
+BeginCmp
+TimeStamp = 581133C5
+Path = /5811371D
+Reference = MH3;
+ValeurCmp = CONN_01X01;
+IdModule  = Mounting_hole:MH3.2;
+EndCmp
+
+BeginCmp
+TimeStamp = 580EFFC6
+Path = /58081893
+Reference = Q1;
+ValeurCmp = 2N7000;
+IdModule  = 2N7000:2N7000;
+EndCmp
+
+BeginCmp
+TimeStamp = 580F0047
+Path = /58073E5F
+Reference = U2;
+ValeurCmp = MCP1700T-3002E/TT;
+IdModule  = Transistors_OldSowjetAera:OldSowjetaera_Transistor_Type-I_BigPads;
+EndCmp
+
+EndListe

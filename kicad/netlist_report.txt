@@ -1,0 +1,118 @@
+Info: Reading netlist file "/home/mw/Dropbox/tank_nrf/tank_nrf.net".
+
+Info: Using references to match components and footprints.
+
+Error: Component 'IC1' footprint 'QFN_MLF20' was not found in any libraries in the footprint library table.
+
+Error: Component 'S1' footprint 'MODULE' was not found in any libraries in the footprint library table.
+
+Error: Component 'U3' footprint 'MODULE' was not found in any libraries in the footprint library table.
+
+Error: Component 'U1' footprint 'DIL20' was not found in any libraries in the footprint library table.
+
+Error: No footprint defined for component 'D2'.
+
+Error: No footprint defined for component 'C6'.
+
+Error: No footprint defined for component 'Q1'.
+
+Error: No footprint defined for component 'R3'.
+
+Error: No footprint defined for component 'R4'.
+
+Error: No footprint defined for component 'R2'.
+
+Error: No footprint defined for component 'C5'.
+
+Error: No footprint defined for component 'C4'.
+
+Error: No footprint defined for component 'D3'.
+
+Error: No footprint defined for component 'D1'.
+
+Error: No footprint defined for component 'R1'.
+
+Error: No footprint defined for component 'U2'.
+
+Error: No footprint defined for component 'C3'.
+
+Error: No footprint defined for component 'C2'.
+
+Error: No footprint defined for component 'C1'.
+
+Info: Checking netlist component footprint "C1:/58072D95:".
+
+Error: Cannot add new component "C1:/58072D95" due to missing footprint "".
+
+Info: Checking netlist component footprint "C2:/58072F63:".
+
+Error: Cannot add new component "C2:/58072F63" due to missing footprint "".
+
+Info: Checking netlist component footprint "C3:/580730B1:".
+
+Error: Cannot add new component "C3:/580730B1" due to missing footprint "".
+
+Info: Checking netlist component footprint "C4:/580804F8:".
+
+Error: Cannot add new component "C4:/580804F8" due to missing footprint "".
+
+Info: Checking netlist component footprint "C5:/58080AA5:".
+
+Error: Cannot add new component "C5:/58080AA5" due to missing footprint "".
+
+Info: Checking netlist component footprint "C6:/5808138D:".
+
+Error: Cannot add new component "C6:/5808138D" due to missing footprint "".
+
+Info: Checking netlist component footprint "D1:/5807FD29:".
+
+Error: Cannot add new component "D1:/5807FD29" due to missing footprint "".
+
+Info: Checking netlist component footprint "D2:/5807FDC4:".
+
+Error: Cannot add new component "D2:/5807FDC4" due to missing footprint "".
+
+Info: Checking netlist component footprint "D3:/58080422:".
+
+Error: Cannot add new component "D3:/58080422" due to missing footprint "".
+
+Info: Checking netlist component footprint "IC1:/58080884:QFN_MLF20".
+
+Error: Cannot add new component "IC1:/58080884" due to missing footprint "QFN_MLF20".
+
+Info: Checking netlist component footprint "Q1:/58081893:".
+
+Error: Cannot add new component "Q1:/58081893" due to missing footprint "".
+
+Info: Checking netlist component footprint "R1:/5807FCB2:".
+
+Error: Cannot add new component "R1:/5807FCB2" due to missing footprint "".
+
+Info: Checking netlist component footprint "R2:/58080B65:".
+
+Error: Cannot add new component "R2:/58080B65" due to missing footprint "".
+
+Info: Checking netlist component footprint "R3:/580816BC:".
+
+Error: Cannot add new component "R3:/580816BC" due to missing footprint "".
+
+Info: Checking netlist component footprint "R4:/5808161B:".
+
+Error: Cannot add new component "R4:/5808161B" due to missing footprint "".
+
+Info: Checking netlist component footprint "S1:/580734B0:MODULE".
+
+Error: Cannot add new component "S1:/580734B0" due to missing footprint "MODULE".
+
+Info: Checking netlist component footprint "U1:/58072C84:DIL20".
+
+Error: Cannot add new component "U1:/58072C84" due to missing footprint "DIL20".
+
+Info: Checking netlist component footprint "U2:/58073E5F:".
+
+Error: Cannot add new component "U2:/58073E5F" due to missing footprint "".
+
+Info: Checking netlist component footprint "U3:/580738E6:MODULE".
+
+Error: Cannot add new component "U3:/580738E6" due to missing footprint "MODULE".
+
